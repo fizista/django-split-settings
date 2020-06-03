@@ -48,7 +48,7 @@ def include(*args, **kwargs):
         # find files per pattern, raise an error if not found (unless file is
         # optional)
         files_to_include = glob.glob(pattern)
-        if not files_to_include and not isinstance(conffile, optional):
+        if not (files_to_include or isinstance(conffile, optional)):
             raise IOError('No such file: %s' % pattern)
 
         for included_file in files_to_include:
